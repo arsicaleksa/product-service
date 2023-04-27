@@ -19,7 +19,7 @@ export class AppController {
       name: 'Nike Patike',
       category: 'Patike',
       brand: 'Nike',
-      description: 'Nike patike za seljake i poljoprivrednike',
+      description: 'Nike patike - nema boljih',
     };
 
     return this.appService.kafkaTest(message);
