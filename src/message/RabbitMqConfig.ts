@@ -7,16 +7,16 @@ import { ConfigService } from '@nestjs/config';
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
-export class MessageConfig implements ClientsModuleOptionsFactory {
+export class RabbitMqConfig implements ClientsModuleOptionsFactory {
   constructor(private readonly configService: ConfigService) {}
   createClientOptions(): Promise<ClientProvider> | ClientProvider {
     return {
-      transport: Transport.KAFKA,
+      transport: Transport.RMQ,
       options: {
-        producerOnlyMode: true,
-        client: {
-          clientId: this.configService.get('MESSAGE_CLIENT_ID'),
-          brokers: this.configService.get('MESSAGE_BROKERS').split(','),
+        urls: this.configService.get('RABBIT_MQ_URLS').split(','),
+        queue: this.configService.get('RABBIT_MQ_QUEUE'),
+        queueOptions: {
+          durable: true,
         },
       },
     };

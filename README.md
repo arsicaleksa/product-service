@@ -55,3 +55,8 @@ $ yarn run start:prod
 
 The message will be produced to the `products` topic.\
 To produce the message call following endpoint: `localhost:3000/kafka-produce`
+
+## Produce dummy message to Rabbit MQ
+
+The message will be produced to the `products` message pattern.\
+To produce the message call following endpoint: `localhost:3000/rabbit-mq-produce`
